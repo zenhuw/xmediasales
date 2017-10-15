@@ -6,24 +6,34 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-
+import {LoginPage} from '../pages/login/login'
+import {AuthSingletonProvider} from '../providers/auth-singleton/auth-singleton'
+import {HttpReqProvider} from '../providers/http-req/http-req'
+import { HttpModule } from '@angular/http';
+import {WhmcsPage} from '../pages/whmcs/whmcs'
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    LoginPage,
+    WhmcsPage
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),HttpModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    LoginPage,
+    WhmcsPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
+    AuthSingletonProvider,
+    HttpReqProvider,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
